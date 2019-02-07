@@ -22,4 +22,13 @@ class AccountTest {
         String balance = account.printBalance();
         assertThat(balance).isEqualTo(minusFiftyOnAccountBalance);
     }
+
+    @Test
+    void name() {
+        String oneHundredDepositStatement =
+                "  Date  \t|\tAmount\t|\tBalance\n" +
+                "01/01/2019\t|\t100.0\t|\t100.0";
+        String operationStatement = oneHundredDepositStatement + " ";
+        assertThat(operationStatement).isEqualTo(oneHundredDepositStatement);
+    }
 }

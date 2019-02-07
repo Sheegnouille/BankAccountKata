@@ -24,11 +24,11 @@ class AccountTest {
     }
 
     @Test
-    void name() {
-        String oneHundredDepositStatement =
-                "  Date  \t|\tAmount\t|\tBalance\n" +
-                "01/01/2019\t|\t100.0\t|\t100.0";
-        String operationStatement = oneHundredDepositStatement + " ";
-        assertThat(operationStatement).isEqualTo(oneHundredDepositStatement);
+    void given_a_deposit_creates_an_operation() {
+        Account account = new Account();
+        account.deposit(new Amount(100.0));
+        int oneOperationOnAccount = 1;
+        assertThat(account.operations.size()).isEqualTo(oneOperationOnAccount);
     }
+
 }

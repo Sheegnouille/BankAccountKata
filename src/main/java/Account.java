@@ -7,8 +7,8 @@ class Account {
     public List<Operation> operations = new ArrayList<Operation>();
 
     public void deposit(Amount depositAmount) {
-        operations.add(new Operation(depositAmount));
         balance.add(depositAmount);
+        operations.add(new Operation(depositAmount, balance));
     }
 
     public String printBalance() {
@@ -17,5 +17,17 @@ class Account {
 
     public void withdraw(Amount withdrawAmount) {
         balance.minus(withdrawAmount);
+        Amount operationAmount = new Amount(0);
+        operationAmount.minus(withdrawAmount);
+        operations.add(new Operation(operationAmount, balance));
+    }
+
+    public String printStatement() {
+        String statement = "Date\tAmount\tBalance";
+        for (Operation operation: operations
+             ) {
+            statement += "\n" + operation.printStatement();
+        }
+        return statement;
     }
 }

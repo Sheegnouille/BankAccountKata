@@ -10,6 +10,10 @@ class Amount {
         this.amount = amount;
     }
 
+    public Amount(Amount otherAmount) {
+        this.amount = otherAmount.amount;
+    }
+
     @Override
     public String toString() {
         return amount.toString();
